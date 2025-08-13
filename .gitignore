@@ -1,0 +1,13 @@
+
+
+.vscode
+node_modules
+.env
+
+# Hardhat files
+/cache
+/artifacts
+/out
+
+# Package lock files
+package-lock.json

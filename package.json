@@ -1,0 +1,27 @@
+{
+  "name": "olympus-ai-private-sale",
+  "version": "1.0-beta.0",
+  "description": "Private sale of leia token",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saifr0/Incentive"
+  },
+  "author": "LEIA <dev@leia.org>",
+  "license": "MIT",
+  "scripts": {
+    "format": "prettier --check --write contracts/**/*.sol **/*.js --config .prettierrc",
+    "compile": "hardhat compile",
+    "deploy": "hardhat compile && hardhat run scripts/deployPresale.js --network sepolia",
+    "test":"forge test --match-path test/presale.t.sol --fork-url https://eth-mainnet.g.alchemy.com/v2/hzq55lpr590lsryyehabgrt4finrp45n"
+  },
+  "devDependencies": {
+    "@chainlink/contracts": "1.0.0",
+    "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/contracts": "5.1.0",
+    "dotenv": "^16.4.5",
+    "prettier": "^3.2.5",
+    "prettier-package-json": "^2.8.0",
+    "prettier-plugin-solidity": "^1.3.1"
+  }
+}
