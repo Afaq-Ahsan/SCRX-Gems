@@ -10,9 +10,9 @@ async function verify(address, constructorArguments) {
 }
 
 async function main() {
-    const signer = '0x8002917a84DB1B1Ef57f7Cf0B19f5F5c611db9D5';
+    const signer = '0x55e39d81cF66F57e32E1F7d75b666BDDfad23896'; //updated
     // this is basically funds wallet, used for transferring funds when revoked claim
-    const fundsWallet_To_Transfer_Revoked_Funds = '0x60bCf12A2dA761E909C3bc29f1cD13Ef1e4847A0';
+    const fundsWallet_To_Transfer_Revoked_Funds = '0x7b3A848119f61B88a7E505A107ABdA6414c50941'; // owner wallet updated
 
     const Claims = await hre.ethers.deployContract('Claims', [signer, fundsWallet_To_Transfer_Revoked_Funds]);
 

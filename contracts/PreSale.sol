@@ -716,14 +716,12 @@ contract PreSale is Rounds, ReentrancyGuardTransient {
     ) private view returns (uint256, uint8) {
         TokenInfo memory tokenInfo = getLatestPrice(token);
         if (tokenInfo.latestPrice != 0) {
-            
             if (referenceTokenPrice != 0 || referenceNormalizationFactor != 0) {
                 revert CodeSyncIssue();
             }
         }
         //  If price feed isn't available, we fallback to the reference price
         if (tokenInfo.latestPrice == 0) {
-           
             if (referenceTokenPrice == 0 || referenceNormalizationFactor == 0) {
                 revert ZeroValue();
             }

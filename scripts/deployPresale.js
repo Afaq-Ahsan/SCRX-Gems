@@ -8,39 +8,28 @@ async function verify(address, constructorArguments) {
     });
 }
 
+
+
 async function main() {
-    const projectWallet = '0x60bCf12A2dA761E909C3bc29f1cD13Ef1e4847A0';
-    const platFormWallet = '0xA2F78A912BA4337692a399407728784FB6B24FB1';
-    const burnWallet = '0xe1dE0eF1fa1F3e5e1f2b2aD134Fb2C3135CEfa3B';
-    const signer = '0x8002917a84DB1B1Ef57f7Cf0B19f5F5c611db9D5';
-    const claim = '0x1890cF752f1be4D60f3b22168c7A6aFEbd9D74C7';
-    const lockup = '0x6A1aa5ac35f38Bdb25BBD976E8eca942b23260b2';
-    const owner = '0x5D7F0ED4EA8EB7a6e0A6Acf1DE9c91Be06968716';
+    
+ const projectWallet = '0x6F0A2017947a1a9c87F5d3a334BB909026fd1109';
+    const platFormWallet = '0x22dA5C97F742eC3828a8183896dA56B44eFd0471';
+    const burnWallet = '0xF14aEB1Cb06c674B58D87D2Cc2dfc4b1e9f4EdB6';
+    const signer = '0x12eF0F1C99D8FD50fFd37cCd12B09Ef7f1213269';
+    const claim = '0xD527EbfA255E4E751Db6d6baC4555F7650f87224';
+    const lockup = '0x034f504F34330eA87dcc8aBae2935eac9fD2eFaE';
+    const subscription = '0xe7Ad3a7EC2fdc8aa141dB9AFc1f701AAb579DA85';
+    const owner = '0x7b3A848119f61B88a7E505A107ABdA6414c50941';
     const lastround = 0;
-    const prices = [
-        process.env.PRICES0,
-        process.env.PRICES1,
-        process.env.PRICES2,
-        process.env.PRICES3,
-        process.env.PRICES4,
-        process.env.PRICES5,
-        process.env.PRICES6
-    ];
+    const maxCap = '200000000000000000000000000';
 
-    const maxCap = '5250000000000000000000000000';
-
-    const PreSale = await hre.ethers.deployContract('PreSale', [
-        projectWallet,
-        platFormWallet,
-        burnWallet,
-        signer,
-        claim,
-        lockup,
-        owner,
-        lastround,
-        prices,
-        maxCap
-    ]);
+    const PreSale = await hre.ethers.deployContract(
+        'PreSale',
+        [projectWallet, platFormWallet, burnWallet, signer, claim, lockup, subscription, owner, lastround, maxCap],
+        {
+            gasLimit: 6000000
+        }
+    );
 
     console.log('Deploying PreSale...');
     await PreSale.waitForDeployment();
@@ -54,11 +43,12 @@ async function main() {
         signer,
         claim,
         lockup,
+        subscription,
         owner,
         lastround,
-        prices,
         maxCap
     ]);
 }
 
 main();
+
